@@ -13,6 +13,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,6 +45,30 @@
             
   <div class="section" id="create-a-model">
 <h1>Create a model<a class="headerlink" href="#create-a-model" title="Permalink to this headline">¶</a></h1>
+<p>A model in <code class="docutils literal notranslate"><span class="pre">fractpy</span></code> is an object which represents the method it is using
+to generate fractals. However, currently <code class="docutils literal notranslate"><span class="pre">fractpy</span></code> only supports Newton
+Fractal (More to be added soon).</p>
+<p>To generate a Newton Fractal model, we first have to create a <code class="docutils literal notranslate"><span class="pre">sympy</span></code>
+expression for the function of which we want to generate the fractal.</p>
+<p>To make a <code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression for <span class="math notranslate nohighlight">\(f(x) = (x^2 - 1)(x^2 + 1)\)</span>, we
+use the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;import sympy as sym</span>
+<span class="go">&gt;&gt;&gt;x = sym.Symbol(&#39;x&#39;)</span>
+<span class="go">&gt;&gt;&gt;function = (x**2 - 1) * (x**2 + 1)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><span class="pre">sympy</span></code> for further information on expressions.</p>
+</div>
+<p>Now to make a Newton Fractal Model, all we have to do is pass in the
+<code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression along with the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> to the <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code>
+class from <code class="docutils literal notranslate"><span class="pre">fractpy.models</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
+<span class="go">&gt;&gt;&gt;model = NewtonFractal(function, x)</span>
+</pre></div>
+</div>
+<p>We can use this model to generate fractals!</p>
 </div>
 
 

@@ -1,3 +1,3 @@
-Iterative Step
+Newton Fractal
 ==============
 

@@ -7,8 +7,8 @@ How to:
     :maxdepth: 1
 
     create-a-model.rst
-    generate-a-plot.rst
-    generate-a-zoom-plot.rst
+    create-a-plot.rst
+    create-a-zoom-plot.rst
     iterative-step.rst
     derivative-and-roots.rst
     
