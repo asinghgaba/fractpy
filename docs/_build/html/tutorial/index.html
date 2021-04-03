@@ -57,7 +57,7 @@ display inherent and repeating similarities are the main requirement
 for being classified as a Fractal.</p>
 <p>Here is an animation <span id="id1">[Mandelbrot2010]</span> representing the Mandelbrot Set
 Fractal one of the most iconic math fractals:</p>
-<a class="reference internal image-reference" href="_static/mandelbrot.gi"><img alt="_static/mandelbrot.gi" class="align-center" src="_static/mandelbrot.gi" /></a>
+<a class="reference internal image-reference" href="../_images/mandelbrot.gif"><img alt="../_images/mandelbrot.gif" class="align-center" src="../_images/mandelbrot.gif" style="width: 480.0px; height: 360.0px;" /></a>
 <p>For more background information on fractals: <span id="id2">[FractalFoundation2009]</span>.</p>
 <div class="section" id="newton-fractal">
 <h3>Newton Fractal<a class="headerlink" href="#newton-fractal" title="Permalink to this headline">¶</a></h3>
@@ -83,13 +83,13 @@ converges to.</p>
 <h2>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h2>
 <p>To generate Newton Fractal for the above function we first have to create
 a <code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;import sympy as sym</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;import sympy as sym</span>
 <span class="go">&gt;&gt;&gt;x = sym.Symbol(&#39;x&#39;)</span>
 <span class="go">&gt;&gt;&gt;function = x**3 - 1</span>
 </pre></div>
 </div>
 <p>Now, we make a <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> model using <code class="docutils literal notranslate"><span class="pre">fractpy</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
 <span class="go">&gt;&gt;&gt;model = NewtonFractal(function, x)</span>
 </pre></div>
 </div>
@@ -97,8 +97,8 @@ a <code class="docutils literal notranslate"><span class="pre">sympy</span></cod
 <div class="section" id="generating-fractal">
 <h2>Generating Fractal<a class="headerlink" href="#generating-fractal" title="Permalink to this headline">¶</a></h2>
 <p>To generate the fractal all we have to do now is call the method <code class="docutils literal notranslate"><span class="pre">plot</span></code>,
-and pass in the axis limits.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;xmin, xmax, ymin, ymax = -2, 2, -2, 2</span>
+and pass in the axes limits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;xmin, xmax, ymin, ymax = -2, 2, -2, 2</span>
 <span class="go">&gt;&gt;&gt;model.plot(xmin, xmax, ymin, ymax)</span>
 </pre></div>
 </div>

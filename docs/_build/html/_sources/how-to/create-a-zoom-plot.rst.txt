@@ -6,7 +6,7 @@ you cannot see the beauty of how it repeats itself.
 
 So ``fractpy`` offers a funtionality in which you can dynamically
 zoom in any region of the plot. To create such plot we will use the
-method ``zoom_plot`` which create two identical panels. Zooming in
+method ``zoom_plot`` which creates two identical panels. Zooming in
 on the right panel will show a rectangle in the first panel, denoting
 the zoomed region. And as done in ``plot`` we will gave to pass in
 the initial axes range::

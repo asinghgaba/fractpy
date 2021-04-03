@@ -18,7 +18,7 @@ for being classified as a Fractal.
 Here is an animation [Mandelbrot2010]_ representing the Mandelbrot Set
 Fractal one of the most iconic math fractals:
 
-.. image:: /_static/mandelbrot.gi
+.. image:: /_static/mandelbrot.gif
     :align: center
     :scale: 150
 
@@ -57,17 +57,13 @@ Creating a Model
 ----------------
 
 To generate Newton Fractal for the above function we first have to create
-a ``sympy`` expression:
-
-.. code:: python
+a ``sympy`` expression::
 
     >>>import sympy as sym
     >>>x = sym.Symbol('x')
     >>>function = x**3 - 1
 
-Now, we make a ``NewtonFractal`` model using ``fractpy``:
-
-.. code:: python
+Now, we make a ``NewtonFractal`` model using ``fractpy``::
 
     >>>from fractpy.models import NewtonFractal
     >>>model = NewtonFractal(function, x)
@@ -76,9 +72,7 @@ Generating Fractal
 ------------------
 
 To generate the fractal all we have to do now is call the method ``plot``,
-and pass in the axis limits.
-
-.. code:: python
+and pass in the axes limits::
 
     >>>xmin, xmax, ymin, ymax = -2, 2, -2, 2
     >>>model.plot(xmin, xmax, ymin, ymax)

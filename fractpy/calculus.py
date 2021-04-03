@@ -1,40 +1,124 @@
 
 import sympy as sym
+from sympy.parsing.sympy_parser import parse_expr
 
 
 
 class Function:
-    """A class for caclulating derivative and relative difference.
+    """A class for performing basic operations on
+    given singel-variable function. The operations
+    include finding roots, calculating derivative.
+
+    Parameters
+    ----------
+    function : str
+        The function of interest (Has to be of
+        single variable).
+
+    Attributes
+    ----------
+    function : ``sympy`` expression
+        The function of interest.
+    roots : set
+        The roots of the function.
+    derivative : ``sympy`` expression
+        The derivative of the function.
+
+    Notes
+    -----
+    This class was mainly developed to be used for
+    ``fractpy.models.NewtonFractal`` class.
 
     
     """
-    #default variable
-    #x = sym.Symbol('x')
-
-    # TODO: Check for single variable function
-           # expr.free_symbols (sympy expression)
-    #TODO: Check for other potential errors
-
     
-    def __init__(self, function, variable):
-        self.f = function
-        self.variable = variable
+    def __init__(self, function):
+        self.function = function
+
+    @property
+    def function(self):
+        return self._function
+
+    @function.setter
+    def function(self, func):
+        expr = parse_expr(func)
+        if len(expr.free_symbols)==1:
+            self._function = expr
+            self._variable = list(expr.free_symbols)[0]
+        else:
+            raise TypeError(func + f" is not a single variable function, \
+it has {len(expr.free_symbols)} variables")
+
+    @property
+    def variable(self):
+        return self._variable
     
-    def calculate_roots(self):
-        return list(sym.solveset(self.f, self.variable))
+    def roots(self):
+        """Calculate roots of the function.
+
+        Returns
+        -------
+        list
+            Roots of the function.
+        """
+        return list(sym.solveset(self.function, self.variable))
 
     def differentiate(self):
-        return sym.diff(self.f, self.variable)
+        """Differentiates the function.
 
-    def relative_difference(self):
-        return self.f / self.differentiate()
+        Returns
+        -------
+        ``sympy`` expression
+            Derivative of the function.
+        """
+        return sym.diff(self.function, self.variable)
 
-    def make_pfunction(self, function, variable):
-        "Converts sympy functions to python functions."
+    def _relative_difference(self):
+        """Computes the expression required for generating Newton
+        fractal i.e. f(x)/f'(x).
+
+        Returns
+        -------
+        ``sympy`` expression
+            The sympy expression for the iteration of Newtons'
+            method.
+        """
+        return self.function / self.differentiate()
+
+    def _make_python_function(self, function=None, variable=None):
+        """Converts ``sympy`` expression to python functions.
+        This makes it easy to calculate multiple values by passing
+        numpy arrays.
+
+        Parameters
+        ----------
+        function : ``sympy`` expression
+            The function which is to be converted (default is
+            the function in the object).
+        variable : :obj:`sympy.Symbol`
+            The variable in terms which the function is defined
+            (default is the variable in the object).
+
+        Returns
+        -------
+        function
+            Python function for the given ``sympy`` function.
+        """
+        if function is None:
+            function = self.function
+        if variable is None:
+            variable = self.variable
         return sym.lambdify(variable, function)
 
-    def rd_pfunction(self):
-        rd = self.relative_difference()
-        return self.make_pfunction(rd, self.variable)
+    def _rd_python_function(self):
+        """Returns the expression required for generating Newton
+        fractal i.e. f(x)/f'(x) in the form of Python function.
 
-    
+        Returns
+        -------
+        function
+            Python function for the iteration of Newtons'
+            method.
+        """
+        rd = self._relative_difference()
+        return self._make_python_function(rd, self.variable)

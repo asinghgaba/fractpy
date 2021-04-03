@@ -1,10 +1,5 @@
-
+"""This class is used for plotting zoom_plot in fractals."""
 from matplotlib.patches import Rectangle
-
-
-
-
-
 
 
 class UpdatingRect(Rectangle):
