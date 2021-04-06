@@ -14,6 +14,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 
+import fractpy
+
 
 # -- Project information -----------------------------------------------------
 
@@ -22,7 +24,7 @@ copyright = '2021, Amarjit Singh Gaba'
 author = 'Amarjit Singh Gaba'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = fractpy.__version__
 
 
 # -- General configuration ---------------------------------------------------
