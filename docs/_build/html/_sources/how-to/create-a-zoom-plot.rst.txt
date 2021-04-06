@@ -9,9 +9,10 @@ zoom in any region of the plot. To create such plot we will use the
 method ``zoom_plot`` which creates two identical panels. Zooming in
 on the right panel will show a rectangle in the first panel, denoting
 the zoomed region. And as done in ``plot`` we will gave to pass in
-the initial axes range::
+the initial axes range, along with the resolution of the plot to be
+generated::
 
-    >>>model.zoom_plot(-2, 2, -2, 2)
+    >>>model.zoom_plot(-2, 2, -2, 2, (200,200))
 
 This creates a plot like this, which can be zoomed in:
 

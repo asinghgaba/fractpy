@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Create a Zoom Plot" href="create-a-zoom-plot.html" />
-    <link rel="prev" title="Create a model" href="create-a-model.html" /> 
+    <link rel="prev" title="Create a Model" href="create-a-model.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -29,7 +29,7 @@
           <a href="create-a-zoom-plot.html" title="Create a Zoom Plot"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="create-a-model.html" title="Create a model"
+          <a href="create-a-model.html" title="Create a Model"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">How to</a> &#187;</li>
@@ -45,9 +45,10 @@
   <div class="section" id="create-a-plot">
 <h1>Create a Plot<a class="headerlink" href="#create-a-plot" title="Permalink to this headline">¶</a></h1>
 <p>To create plot from the model, we call the method <code class="docutils literal notranslate"><span class="pre">plot</span></code>, and
-pass in the axes limits. To plot a fractal for the range -2, 2 and
--2.5 , 2.5 for x and y-axis respectively:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;model.plot(-2, 2, -2.5, 2.5)</span>
+pass in the axes limits, along with the resolution of the plot we
+want. To plot a fractal for the range -2, 2 and
+-2.5 , 2.5 for x and y-axis respectively and of resolution (200,300):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;model.plot(-2, 2, -2.5, 2.5, (200,300))</span>
 </pre></div>
 </div>
 <p>This creates a plot:</p>
@@ -63,7 +64,7 @@ pass in the axes limits. To plot a fractal for the range -2, 2 and
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="create-a-model.html"
-                        title="previous chapter">Create a model</a></p>
+                        title="previous chapter">Create a Model</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="create-a-zoom-plot.html"
                         title="next chapter">Create a Zoom Plot</a></p>
@@ -98,7 +99,7 @@ pass in the axes limits. To plot a fractal for the range -2, 2 and
           <a href="create-a-zoom-plot.html" title="Create a Zoom Plot"
              >next</a> |</li>
         <li class="right" >
-          <a href="create-a-model.html" title="Create a model"
+          <a href="create-a-model.html" title="Create a Model"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >How to</a> &#187;</li>

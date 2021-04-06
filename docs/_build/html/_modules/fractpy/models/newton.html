@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fractpy.models.newton &#8212; FractPy 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">fractpy.models.newton</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for fractpy.models.newton</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;A class for plotting Newton Fractal.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+
+<span class="kn">from</span> <span class="nn">..zoom</span> <span class="kn">import</span> <span class="n">UpdatingRect</span>
+<span class="kn">from</span> <span class="nn">..function</span> <span class="kn">import</span> <span class="n">Function</span>
+
+
+<span class="n">rect</span> <span class="o">=</span> <span class="n">UpdatingRect</span><span class="p">(</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="NewtonFractal"><a class="viewcode-back" href="../../../reference/source/fractpy.models.html#fractpy.models.newton.NewtonFractal">[docs]</a><span class="k">class</span> <span class="nc">NewtonFractal</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A class for plotting Newton Fractal for a given function.</span>
+
+<span class="sd">    TODO: 1. Explain the process for generating fractals and cite </span>
+<span class="sd">    references.</span>
+<span class="sd">    2. Colours</span>
+<span class="sd">    3. Newton iteration on top of plot</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    func : ``sympy`` expression</span>
+<span class="sd">        The function for which we want to plot fractal (single-</span>
+<span class="sd">        variable).</span>
+<span class="sd">    prec_goal : float, optional</span>
+<span class="sd">        Tolerance for how small the iteration step be relative</span>
+<span class="sd">        to the point to break the loop for that point i.e. if</span>
+<span class="sd">        relative difference of the iteration step and the point</span>
+<span class="sd">        is smaller than this value, it will stop the loop for</span>
+<span class="sd">        this point.</span>
+<span class="sd">    nmax : int, optional</span>
+<span class="sd">        Number of iterations to be run (default is 200). </span>
+<span class="sd">        Minimum recommended value is 50, but for some functions</span>
+<span class="sd">        may required over 500.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    function : :obj:`fractpy.Function`</span>
+<span class="sd">        The function for which the Newton Fractal is being</span>
+<span class="sd">        generated.</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    fractpy.Function : </span>
+<span class="sd">        A class for performing basic calculus operations on</span>
+<span class="sd">        a function (like finding roots).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">prec_goal</span><span class="o">=</span><span class="mf">1.e-11</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_precision_goal</span> <span class="o">=</span> <span class="n">prec_goal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">nmax</span> <span class="c1"># Number of iterations</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;### FractPy Model ###</span><span class="se">\n</span><span class="s2">Type: Newton Fractal</span><span class="se">\n</span><span class="s2">Function: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_function</span>
+    
+    <span class="nd">@function</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_function</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_roots_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_function</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_newton_step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_function</span><span class="o">.</span><span class="n">_rd_python_function</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">roots_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_roots_list</span>
+    
+    <span class="k">def</span> <span class="nf">_make_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Makes a list of all the points in the plane.</span>
+<span class="sd">        Has to be called after assigning xvals and yvals.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+                
+    <span class="k">def</span> <span class="nf">_match_root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Matches the point to the root to which it converges.&quot;&quot;&quot;</span>
+        <span class="n">findgoal</span> <span class="o">=</span> <span class="mf">1.e-10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span>
+        <span class="n">rootid</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roots_list</span><span class="p">:</span>
+            <span class="c1"># Check for closeness to each root in the list</span>
+            <span class="n">rootid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span> <span class="o">-</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="n">findgoal</span><span class="p">,</span> 
+                              <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">roots_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">rootid</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="n">rootid</span>
+                
+    <span class="k">def</span> <span class="nf">_prepare_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Prepares the plot data for the given range.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_make_list</span><span class="p">()</span>
+
+        <span class="c1"># Temporary array to be used for comparision:</span>
+        <span class="n">temp_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">)</span>
+        <span class="c1"># Relative difference of iteration step and the point:</span>
+        <span class="n">rel_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span>
+        <span class="c1"># This counts number of iteration each point took to converge:</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">overall_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">prec_goal_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_precision_goal</span>
+    
+        <span class="k">while</span> <span class="nb">any</span><span class="p">(</span><span class="n">rel_diff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_precision_goal</span> <span class="ow">and</span> <span class="n">overall_counter</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+            <span class="n">newton_step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_newton_step</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span> <span class="o">=</span> <span class="n">temp_list</span> <span class="o">-</span> <span class="n">newton_step</span>
+            <span class="n">rel_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">newton_step</span><span class="o">/</span><span class="n">temp_list</span><span class="p">)</span>
+            <span class="n">temp_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z_list</span>
+            <span class="c1"># If smaller then the tolerance then don&#39;t count:</span>
+            <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="n">rel_diff</span><span class="p">,</span> <span class="n">prec_goal_list</span><span class="p">)</span>
+            <span class="n">overall_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_match_root</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="c1">################################</span>
+        <span class="c1">#mask = data==-1</span>
+        <span class="c1">#mask = mask.astype(int)</span>
+        <span class="c1">#mask = np.reshape(mask, (len(self._xvals), len(self._yvals))).T</span>
+        <span class="c1">#return mask</span>
+        <span class="c1">##################################</span>
+        <span class="c1"># TODO: Shading of the fractals</span>
+        <span class="c1">#nroot = nroot - 0.99*np.log(counter/np.max(counter))</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">_ax_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates the plot for the zoomed region.&quot;&quot;&quot;</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_autoscale_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Otherwise, infinite loop</span>
+        <span class="c1"># Get the number of points from the number of pixels in the window</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="c1"># Set the dimensions ratio similar to the initial values</span>
+        <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">*</span> <span class="n">w</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+        <span class="c1"># Get the range for the new area</span>
+        <span class="n">vl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">viewLim</span>
+        <span class="n">extent</span> <span class="o">=</span> <span class="n">vl</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="n">vl</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">vl</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="n">vl</span><span class="o">.</span><span class="n">y1</span>
+        <span class="c1"># Update the image object with our new data and extent</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">im</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prepare_plot</span><span class="p">(</span><span class="o">*</span><span class="n">extent</span><span class="p">))</span>
+        <span class="n">im</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>
+    
+<div class="viewcode-block" id="NewtonFractal.plot"><a class="viewcode-back" href="../../../reference/source/fractpy.models.html#fractpy.models.newton.NewtonFractal.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Plots the fractal for given range and dimensions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        xstart : float</span>
+<span class="sd">            Lower limit of x-axis</span>
+<span class="sd">        xend : float</span>
+<span class="sd">            Upper limit of x-axis</span>
+<span class="sd">        ystart : float</span>
+<span class="sd">            Lower limit of y-axis</span>
+<span class="sd">        yend : float</span>
+<span class="sd">            Upper limit of y-axis</span>
+<span class="sd">        dim : list of int, optional</span>
+<span class="sd">            The dimensions of the plot to be generated (resolution</span>
+<span class="sd">            of the plot, width X height)(default is (100, 100)).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">dim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prepare_plot</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">),</span> <span class="n">fignum</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="NewtonFractal.zoom_plot"><a class="viewcode-back" href="../../../reference/source/fractpy.models.html#fractpy.models.newton.NewtonFractal.zoom_plot">[docs]</a>    <span class="k">def</span> <span class="nf">zoom_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Plots the fractal in two identical panels. Zooming in</span>
+<span class="sd">        on the right panel will show a rectangle in the first</span>
+<span class="sd">        panel, denoting the zoomed region.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        xstart : float</span>
+<span class="sd">            Lower limit of x-axis</span>
+<span class="sd">        xend : float</span>
+<span class="sd">            Upper limit of x-axis</span>
+<span class="sd">        ystart : float</span>
+<span class="sd">            Lower limit of y-axis</span>
+<span class="sd">        yend : float</span>
+<span class="sd">            Upper limit of y-axis</span>
+<span class="sd">        dim : list of int, optional</span>
+<span class="sd">            The dimensions of the plot to be generated (resolution</span>
+<span class="sd">            of the plot, width X height)(default is (100, 100)).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">dim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_plot</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">)</span>
+
+        <span class="n">fig1</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xvals</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_yvals</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+
+        
+        <span class="n">rect</span><span class="o">.</span><span class="n">set_bounds</span><span class="p">(</span><span class="o">*</span><span class="n">ax2</span><span class="o">.</span><span class="n">viewLim</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+
+        <span class="c1"># Connect for changing the view limits</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;xlim_changed&#39;</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;ylim_changed&#39;</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
+
+        <span class="n">ax2</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;xlim_changed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ax_update</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;ylim_changed&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ax_update</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Zoom here&quot;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">fractpy.models.newton</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Amarjit Singh Gaba.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create a model &#8212; FractPy 0.0.1 documentation</title>
+    <title>Create a Model &#8212; FractPy 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     
@@ -34,7 +34,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">How to</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Create a model</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Create a Model</a></li> 
       </ul>
     </div>  
 
@@ -44,29 +44,28 @@
           <div class="body" role="main">
             
   <div class="section" id="create-a-model">
-<h1>Create a model<a class="headerlink" href="#create-a-model" title="Permalink to this headline">¶</a></h1>
+<h1>Create a Model<a class="headerlink" href="#create-a-model" title="Permalink to this headline">¶</a></h1>
 <p>A model in <code class="docutils literal notranslate"><span class="pre">fractpy</span></code> is an object which represents the method it is using
 to generate fractals. However, currently <code class="docutils literal notranslate"><span class="pre">fractpy</span></code> only supports Newton
-Fractal (More to be added soon).</p>
-<p>To generate a Newton Fractal model, we first have to create a <code class="docutils literal notranslate"><span class="pre">sympy</span></code>
-expression for the function of which we want to generate the fractal.</p>
-<p>To make a <code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression for <span class="math notranslate nohighlight">\(f(x) = (x^2 - 1)(x^2 + 1)\)</span>, we
-use the following code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;import sympy as sym</span>
-<span class="go">&gt;&gt;&gt;x = sym.Symbol(&#39;x&#39;)</span>
-<span class="go">&gt;&gt;&gt;function = (x**2 - 1) * (x**2 + 1)</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><span class="pre">sympy</span></code> for further information on expressions.</p>
-</div>
-<p>Now to make a Newton Fractal Model, all we have to do is pass in the
-<code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression along with the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> to the <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code>
-class from <code class="docutils literal notranslate"><span class="pre">fractpy.models</span></code>:</p>
+Fractal (more to be added soon).</p>
+<p>To make a Newton Fractal Model for the function
+<span class="math notranslate nohighlight">\(f(x) = (x^2 - 1)(x^2 + 1)\)</span>  all we have to do is pass in the
+function as <code class="docutils literal notranslate"><span class="pre">str</span></code> to the <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> class from module
+<code class="docutils literal notranslate"><span class="pre">fractpy.models</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
-<span class="go">&gt;&gt;&gt;model = NewtonFractal(function, x)</span>
+<span class="go">&gt;&gt;&gt;model = NewtonFractal(&quot;(x**2 - 1)(x**2 + 1)&quot;)</span>
+<span class="go">&gt;&gt;&gt;model</span>
+<span class="go">### FractPy Model ###</span>
+<span class="go">Type: Newton Fractal</span>
+<span class="go">Function: (x**2 - 1)*(x**2 + 1)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For complex values use <strong>I</strong> (upper case i) instead of commonly used
+convention of <strong>i</strong>. For example: function
+<span class="math notranslate nohighlight">\(f(x) = (x - 1)(x + i)(x - i)\)</span> would be passed as
+<code class="docutils literal notranslate"><span class="pre">&quot;(x</span> <span class="pre">-</span> <span class="pre">1)(x</span> <span class="pre">+</span> <span class="pre">I)(x</span> <span class="pre">-</span> <span class="pre">I)&quot;</span></code>.</p>
 </div>
 <p>We can use this model to generate fractals!</p>
 </div>
@@ -119,7 +118,7 @@ class from <code class="docutils literal notranslate"><span class="pre">fractpy.
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">FractPy 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >How to</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Create a model</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Create a Model</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -57,7 +57,7 @@ display inherent and repeating similarities are the main requirement
 for being classified as a Fractal.</p>
 <p>Here is an animation <span id="id1">[Mandelbrot2010]</span> representing the Mandelbrot Set
 Fractal one of the most iconic math fractals:</p>
-<a class="reference internal image-reference" href="../_images/mandelbrot.gif"><img alt="../_images/mandelbrot.gif" class="align-center" src="../_images/mandelbrot.gif" style="width: 480.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="_static/mandelbrot.gi"><img alt="_static/mandelbrot.gi" class="align-center" src="_static/mandelbrot.gi" /></a>
 <p>For more background information on fractals: <span id="id2">[FractalFoundation2009]</span>.</p>
 <div class="section" id="newton-fractal">
 <h3>Newton Fractal<a class="headerlink" href="#newton-fractal" title="Permalink to this headline">¶</a></h3>
@@ -77,32 +77,55 @@ converges to.</p>
 <div class="math notranslate nohighlight">
 \[z_{n+1} = z_n - \frac{z^3 - 1}{3z^2}\]</div>
 <p>Let us now see how to plot fractal for this function using <code class="docutils literal notranslate"><span class="pre">fractpy</span></code>.</p>
-</div>
-</div>
+<p>Generating fractals in <code class="docutils literal notranslate"><span class="pre">fractypy</span></code> can be divided into 2 steps:</p>
+<ol class="arabic simple">
+<li><p>Creating a model</p></li>
+<li><p>Generating the fractal</p></li>
+</ol>
 <div class="section" id="creating-a-model">
-<h2>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h2>
-<p>To generate Newton Fractal for the above function we first have to create
-a <code class="docutils literal notranslate"><span class="pre">sympy</span></code> expression:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;import sympy as sym</span>
-<span class="go">&gt;&gt;&gt;x = sym.Symbol(&#39;x&#39;)</span>
-<span class="go">&gt;&gt;&gt;function = x**3 - 1</span>
+<h4>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h4>
+<p>A model represents the technique being used to generate the fractal,
+so generating fractal from Newtons’ method would involve making a
+model <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> which is a class of module <code class="docutils literal notranslate"><span class="pre">fractpy.models</span></code>,
+and then passing the required function in the form <code class="docutils literal notranslate"><span class="pre">str</span></code> as an
+argument during initialisation. The following code shows how to
+make a <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> model for the above function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
+<span class="go">&gt;&gt;&gt;model = NewtonFractal(&quot;x**3 - 1&quot;)</span>
+<span class="go">&gt;&gt;&gt;model</span>
+<span class="go">### FractPy Model ###</span>
+<span class="go">Type: Newton Fractal</span>
+<span class="go">Function: x**3 - 1</span>
 </pre></div>
 </div>
-<p>Now, we make a <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> model using <code class="docutils literal notranslate"><span class="pre">fractpy</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from fractpy.models import NewtonFractal</span>
-<span class="go">&gt;&gt;&gt;model = NewtonFractal(function, x)</span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For complex values use <strong>I</strong> (upper case i) instead of commonly used
+convention of <strong>i</strong>. For example: function
+<span class="math notranslate nohighlight">\(f(x) = (x - 1)(x + i)(x - i)\)</span> would be passed as
+<code class="docutils literal notranslate"><span class="pre">&quot;(x</span> <span class="pre">-</span> <span class="pre">1)(x</span> <span class="pre">+</span> <span class="pre">I)(x</span> <span class="pre">-</span> <span class="pre">I)&quot;</span></code>.</p>
 </div>
 </div>
 <div class="section" id="generating-fractal">
-<h2>Generating Fractal<a class="headerlink" href="#generating-fractal" title="Permalink to this headline">¶</a></h2>
+<h4>Generating Fractal<a class="headerlink" href="#generating-fractal" title="Permalink to this headline">¶</a></h4>
 <p>To generate the fractal all we have to do now is call the method <code class="docutils literal notranslate"><span class="pre">plot</span></code>,
-and pass in the axes limits:</p>
+and pass in the axes limits along with the desired resolution of the
+image:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;xmin, xmax, ymin, ymax = -2, 2, -2, 2</span>
-<span class="go">&gt;&gt;&gt;model.plot(xmin, xmax, ymin, ymax)</span>
+<span class="go">&gt;&gt;&gt;model.plot(xmin, xmax, ymin, ymax, (200, 200))</span>
 </pre></div>
 </div>
+<p>The above code will generate the Newton Fractal for <span class="math notranslate nohighlight">\(x^3 - 1\)</span>, in the range
+-2 to 2 for both x-axis and y-axis, and the resolution of the image would be
+200X200.</p>
 <p>This creates the following plot:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generating fractal requires some heavy computation so it may take seconds,
+or minutes depending on the computing power of the system.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -117,11 +140,13 @@ and pass in the axes limits:</p>
   <ul>
 <li><a class="reference internal" href="#">Tutorial: Generating Newton Fractal for a simple function</a><ul>
 <li><a class="reference internal" href="#introduction-to-fractal">Introduction to Fractal</a><ul>
-<li><a class="reference internal" href="#newton-fractal">Newton Fractal</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#newton-fractal">Newton Fractal</a><ul>
 <li><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
 <li><a class="reference internal" href="#generating-fractal">Generating Fractal</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

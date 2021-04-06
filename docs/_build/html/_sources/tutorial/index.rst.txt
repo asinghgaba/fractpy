@@ -18,7 +18,7 @@ for being classified as a Fractal.
 Here is an animation [Mandelbrot2010]_ representing the Mandelbrot Set
 Fractal one of the most iconic math fractals:
 
-.. image:: /_static/mandelbrot.gif
+.. image:: /_static/mandelbrot.gi
     :align: center
     :scale: 150
 
@@ -52,31 +52,52 @@ For :math:`f(z) = z^3 - 1`, the iteration is:
 
 Let us now see how to plot fractal for this function using ``fractpy``.
 
+Generating fractals in ``fractypy`` can be divided into 2 steps:
+
+1. Creating a model
+   
+2. Generating the fractal
+
 
 Creating a Model
-----------------
-
-To generate Newton Fractal for the above function we first have to create
-a ``sympy`` expression::
-
-    >>>import sympy as sym
-    >>>x = sym.Symbol('x')
-    >>>function = x**3 - 1
-
-Now, we make a ``NewtonFractal`` model using ``fractpy``::
+________________
+A model represents the technique being used to generate the fractal,
+so generating fractal from Newtons' method would involve making a
+model ``NewtonFractal`` which is a class of module ``fractpy.models``,
+and then passing the required function in the form ``str`` as an
+argument during initialisation. The following code shows how to
+make a ``NewtonFractal`` model for the above function::
 
     >>>from fractpy.models import NewtonFractal
-    >>>model = NewtonFractal(function, x)
+    >>>model = NewtonFractal("x**3 - 1")
+    >>>model
+    ### FractPy Model ###
+    Type: Newton Fractal
+    Function: x**3 - 1
+
+.. note::
+    For complex values use **I** (upper case i) instead of commonly used
+    convention of **i**. For example: function
+    :math:`f(x) = (x - 1)(x + i)(x - i)` would be passed as
+    ``"(x - 1)(x + I)(x - I)"``.
 
 Generating Fractal
-------------------
-
+__________________
 To generate the fractal all we have to do now is call the method ``plot``,
-and pass in the axes limits::
+and pass in the axes limits along with the desired resolution of the
+image::
 
     >>>xmin, xmax, ymin, ymax = -2, 2, -2, 2
-    >>>model.plot(xmin, xmax, ymin, ymax)
+    >>>model.plot(xmin, xmax, ymin, ymax, (200, 200))
+
+The above code will generate the Newton Fractal for :math:`x^3 - 1`, in the range
+-2 to 2 for both x-axis and y-axis, and the resolution of the image would be
+200X200.
 
 This creates the following plot:
 
 .. TODO: Insert Plot
+
+.. note::
+    Generating fractal requires some heavy computation so it may take seconds,
+    or minutes depending on the computing power of the system.

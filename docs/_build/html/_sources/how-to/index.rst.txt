@@ -9,6 +9,5 @@ How to:
     create-a-model.rst
     create-a-plot.rst
     create-a-zoom-plot.rst
-    iterative-step.rst
     derivative-and-roots.rst
     
