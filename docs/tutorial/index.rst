@@ -52,6 +52,9 @@ For :math:`f(z) = z^3 - 1`, the iteration is:
 
 Let us now see how to plot fractal for this function using ``fractpy``.
 
+Using FractPy
+-------------
+
 Generating fractals in ``fractypy`` can be divided into 2 steps:
 
 1. Creating a model
@@ -60,7 +63,7 @@ Generating fractals in ``fractypy`` can be divided into 2 steps:
 
 
 Creating a Model
-________________
+++++++++++++++++
 A model represents the technique being used to generate the fractal,
 so generating fractal from Newtons' method would involve making a
 model ``NewtonFractal`` which is a class of module ``fractpy.models``,
@@ -82,7 +85,7 @@ make a ``NewtonFractal`` model for the above function::
     ``"(x - 1)(x + I)(x - I)"``.
 
 Generating Fractal
-__________________
+++++++++++++++++++
 To generate the fractal all we have to do now is call the method ``plot``,
 and pass in the axes limits along with the desired resolution of the
 image::

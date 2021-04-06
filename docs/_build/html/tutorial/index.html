@@ -77,13 +77,17 @@ converges to.</p>
 <div class="math notranslate nohighlight">
 \[z_{n+1} = z_n - \frac{z^3 - 1}{3z^2}\]</div>
 <p>Let us now see how to plot fractal for this function using <code class="docutils literal notranslate"><span class="pre">fractpy</span></code>.</p>
+</div>
+</div>
+<div class="section" id="using-fractpy">
+<h2>Using FractPy<a class="headerlink" href="#using-fractpy" title="Permalink to this headline">¶</a></h2>
 <p>Generating fractals in <code class="docutils literal notranslate"><span class="pre">fractypy</span></code> can be divided into 2 steps:</p>
 <ol class="arabic simple">
 <li><p>Creating a model</p></li>
 <li><p>Generating the fractal</p></li>
 </ol>
 <div class="section" id="creating-a-model">
-<h4>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h4>
+<h3>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h3>
 <p>A model represents the technique being used to generate the fractal,
 so generating fractal from Newtons’ method would involve making a
 model <code class="docutils literal notranslate"><span class="pre">NewtonFractal</span></code> which is a class of module <code class="docutils literal notranslate"><span class="pre">fractpy.models</span></code>,
@@ -107,7 +111,7 @@ convention of <strong>i</strong>. For example: function
 </div>
 </div>
 <div class="section" id="generating-fractal">
-<h4>Generating Fractal<a class="headerlink" href="#generating-fractal" title="Permalink to this headline">¶</a></h4>
+<h3>Generating Fractal<a class="headerlink" href="#generating-fractal" title="Permalink to this headline">¶</a></h3>
 <p>To generate the fractal all we have to do now is call the method <code class="docutils literal notranslate"><span class="pre">plot</span></code>,
 and pass in the axes limits along with the desired resolution of the
 image:</p>
@@ -127,7 +131,6 @@ or minutes depending on the computing power of the system.</p>
 </div>
 </div>
 </div>
-</div>
 
 
             <div class="clearer"></div>
@@ -140,11 +143,12 @@ or minutes depending on the computing power of the system.</p>
   <ul>
 <li><a class="reference internal" href="#">Tutorial: Generating Newton Fractal for a simple function</a><ul>
 <li><a class="reference internal" href="#introduction-to-fractal">Introduction to Fractal</a><ul>
-<li><a class="reference internal" href="#newton-fractal">Newton Fractal</a><ul>
-<li><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
-<li><a class="reference internal" href="#generating-fractal">Generating Fractal</a></li>
+<li><a class="reference internal" href="#newton-fractal">Newton Fractal</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#using-fractpy">Using FractPy</a><ul>
+<li><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
+<li><a class="reference internal" href="#generating-fractal">Generating Fractal</a></li>
 </ul>
 </li>
 </ul>
