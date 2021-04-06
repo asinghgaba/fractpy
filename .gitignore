@@ -1,0 +1,6 @@
+.DS_Store
+docs/_build
+*pyc
+.eggs
+.coverage
+*mypy*

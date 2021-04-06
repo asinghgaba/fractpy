@@ -1,28 +1,28 @@
-
+"""A class for performing basic operations on functions."""
 import sympy as sym
-from sympy.parsing.sympy_parser import parse_expr
+from sympy.parsing.sympy_parser import (parse_expr, 
+standard_transformations, implicit_multiplication_application)
 
 
 
 class Function:
     """A class for performing basic operations on
-    given singel-variable function. The operations
+    given single-variable function. The operations
     include finding roots, calculating derivative.
 
     Parameters
     ----------
     function : str
-        The function of interest (Has to be of
-        single variable).
+        The function of interest (has to be a
+        single variable function).
 
     Attributes
     ----------
     function : ``sympy`` expression
         The function of interest.
-    roots : set
-        The roots of the function.
-    derivative : ``sympy`` expression
-        The derivative of the function.
+    variable : :obj:`sympy.Symbol`
+        The variable in terms which the function
+        is defined.
 
     Notes
     -----
@@ -35,13 +35,18 @@ class Function:
     def __init__(self, function):
         self.function = function
 
+    def __repr__(self):
+        return str(self.function)
+
     @property
     def function(self):
         return self._function
 
     @function.setter
     def function(self, func):
-        expr = parse_expr(func)
+        transformations = (standard_transformations + 
+        (implicit_multiplication_application,))
+        expr = parse_expr(func, transformations=transformations)
         if len(expr.free_symbols)==1:
             self._function = expr
             self._variable = list(expr.free_symbols)[0]

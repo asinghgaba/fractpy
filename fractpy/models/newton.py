@@ -1,10 +1,10 @@
-
+"""A class for plotting Newton Fractal."""
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sym
 
 from ..zoom import UpdatingRect
-from ..calculus import Function
+from ..function import Function
 
 
 rect = UpdatingRect(
@@ -54,9 +54,12 @@ class NewtonFractal:
         self._precision_goal = prec_goal
         self.n = nmax # Number of iterations
 
+    def __repr__(self):
+        return f"### FractPy Model ###\nType: Newton Fractal\nFunction: {self.function}"
+
     @property
     def function(self):
-        print(self._function)
+        return self._function
     
     @function.setter
     def function(self, func):
