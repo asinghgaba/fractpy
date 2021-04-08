@@ -18,7 +18,7 @@ for being classified as a Fractal.
 Here is an animation [Mandelbrot2010]_ representing the Mandelbrot Set
 Fractal one of the most iconic math fractals:
 
-.. image:: /_static/mandelbrot.gi
+.. image:: /_static/mandelbrot.gif
     :align: center
     :scale: 150
 
