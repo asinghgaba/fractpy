@@ -5,6 +5,7 @@ import unittest
 import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
+from matplotlib.testing.decorators import check_figures_equal
 
 from fractpy.models import NewtonFractal
 
@@ -72,4 +73,7 @@ x**3 - 2*x**2 - 4"
         [2, 2, 2, 2, 2, 2, 2, 2, 0, 0]])
         self.assertTrue((data == test_data).all())
 
-    def test_plot()
+    @check_figures_equal(extensions=['png'])
+    def test_plot(fig_test, fig_ref):
+        fig_test.subplots().plot([1, 3, 5])
+        fig_ref.subplots().plot([0, 1, 2], [1, 3, 5])

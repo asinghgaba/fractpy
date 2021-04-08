@@ -173,6 +173,7 @@ class NewtonFractal:
         plt.matshow(self._prepare_plot(xstart, xend, ystart, yend), fignum=1, origin='lower')
         plt.colorbar()
         plt.show()
+        #plt.savefig(f"Newton Fractal, f(x)={self.function}.pdf")
 
     def zoom_plot(self, xstart, xend, ystart, yend, dim=(100, 100)):
         """Plots the fractal in two identical panels. Zooming in
