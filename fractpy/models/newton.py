@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sym
 
-from ..zoom import UpdatingRect
-from ..function import Function
+from fractpy.zoom import UpdatingRect
+from fractpy import Function
 
 
 rect = UpdatingRect(
@@ -59,7 +59,7 @@ class NewtonFractal:
 
     @property
     def function(self):
-        return self._function
+        return self._function.function
     
     @function.setter
     def function(self, func):
@@ -87,8 +87,8 @@ class NewtonFractal:
         for r in self.roots_list:
             # Check for closeness to each root in the list
             rootid = np.where(np.abs(self._z_list - r * np.ones(len(self._z_list))) < findgoal, 
-                              np.ones(len(self._z_list)) * self.roots_list.index(r), rootid)
-            
+                              np.ones(len(self._z_list)) * np.where(self.roots_list == r)[0][0],
+                              rootid)
         return rootid
                 
     def _prepare_plot(self, xstart, xend, ystart, yend):

@@ -1,4 +1,6 @@
 """A class for performing basic operations on functions."""
+
+import numpy as np
 import sympy as sym
 from sympy.parsing.sympy_parser import (parse_expr, 
 standard_transformations, implicit_multiplication_application)
@@ -66,7 +68,8 @@ it has {len(expr.free_symbols)} variables")
         list
             Roots of the function.
         """
-        return list(sym.solveset(self.function, self.variable))
+        return np.array(list(sym.solveset(self.function, self.variable)),\
+            dtype=complex)
 
     def differentiate(self):
         """Differentiates the function.
