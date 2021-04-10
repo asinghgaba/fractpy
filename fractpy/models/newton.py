@@ -1,6 +1,7 @@
 """A class for plotting Newton Fractal."""
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import sympy as sym
 
 from fractpy.zoom import UpdatingRect
@@ -59,7 +60,7 @@ class NewtonFractal:
 
     @property
     def function(self):
-        return self._function.function
+        return self._function
     
     @function.setter
     def function(self, func):
@@ -165,15 +166,24 @@ class NewtonFractal:
         dim : list of int, optional
             The dimensions of the plot to be generated (resolution
             of the plot, width X height)(default is (100, 100)).
+
+        Returns
+        -------
+        :obj:`matplotlib.figure.Figure`
         """
         self._width = dim[0]
         self._height = dim[1]
         
-        plt.figure(figsize=(10, 10))
-        plt.matshow(self._prepare_plot(xstart, xend, ystart, yend), fignum=1, origin='lower')
-        plt.colorbar()
-        plt.show()
-        #plt.savefig(f"Newton Fractal, f(x)={self.function}.pdf")
+        fig, ax = plt.subplots()
+        im = ax.matshow(self._prepare_plot(xstart, xend, ystart, yend), origin='lower',
+        extent=(self._xvals.min(), self._xvals.max(), self._yvals.min(), self._yvals.max()))
+        #fig.colorbar(ncmap, ax=ax)
+        title = f"Newton Fractal for $f({sym.latex(self.function.variable)}) = \
+            {sym.latex(self.function.function)}$"
+        ax.set_title(title)
+        plt.tight_layout()
+        
+        return fig
 
     def zoom_plot(self, xstart, xend, ystart, yend, dim=(100, 100)):
         """Plots the fractal in two identical panels. Zooming in
@@ -193,15 +203,19 @@ class NewtonFractal:
         dim : list of int, optional
             The dimensions of the plot to be generated (resolution
             of the plot, width X height)(default is (100, 100)).
+
+        Returns
+        -------
+        :obj:`matplotlib.figure.Figure`
         """
         self._width = dim[0]
         self._height = dim[1]
         Z = self._prepare_plot(xstart, xend, ystart, yend)
 
-        fig1, (ax1, ax2) = plt.subplots(1, 2)
-        ax1.imshow(Z, origin='lower',
+        fig, (ax1, ax2) = plt.subplots(1, 2)
+        ax1.matshow(Z, origin='lower',
                 extent=(self._xvals.min(), self._xvals.max(), self._yvals.min(), self._yvals.max()))
-        ax2.imshow(Z, origin='lower',
+        ax2.matshow(Z, origin='lower',
                 extent=(self._xvals.min(), self._xvals.max(), self._yvals.min(), self._yvals.max()))
 
         
@@ -216,5 +230,5 @@ class NewtonFractal:
         ax2.callbacks.connect('ylim_changed', self._ax_update)
         ax2.set_title("Zoom here")
 
-        plt.show()
+        return fig
 
