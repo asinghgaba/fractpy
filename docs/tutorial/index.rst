@@ -88,10 +88,11 @@ Generating Fractal
 ++++++++++++++++++
 To generate the fractal all we have to do now is call the method ``plot``,
 and pass in the axes limits along with the desired resolution of the
-image::
+image which returns a ``matplotlib.Figure.figure``::
 
     >>>xmin, xmax, ymin, ymax = -2, 2, -2, 2
-    >>>model.plot(xmin, xmax, ymin, ymax, (200, 200))
+    >>>p = model.plot(xmin, xmax, ymin, ymax, (200, 200))
+    >>>p.show()
 
 The above code will generate the Newton Fractal for :math:`x^3 - 1`, in the range
 -2 to 2 for both x-axis and y-axis, and the resolution of the image would be

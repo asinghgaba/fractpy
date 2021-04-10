@@ -10,9 +10,10 @@ method ``zoom_plot`` which creates two identical panels. Zooming in
 on the right panel will show a rectangle in the first panel, denoting
 the zoomed region. And as done in ``plot`` we will gave to pass in
 the initial axes range, along with the resolution of the plot to be
-generated::
+generated, and get the ``matplotlib.figure.Figure``::
 
-    >>>model.zoom_plot(-2, 2, -2, 2, (200,200))
+    >>>p = model.zoom_plot(-2, 2, -2, 2, (200,200))
+    >>>p.show()
 
 This creates a plot like this, which can be zoomed in:
 
