@@ -28,7 +28,7 @@ p.show()
 
 The above code will generate the following plot:
 
-<img src="docs/_static/readme_plot.png" width=500 class="center">
+![](docs/_static/readme_plot.png =500x500)
 
 Full documentation is available here: https://fractpy.readthedocs.io/
 
