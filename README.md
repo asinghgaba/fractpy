@@ -1,10 +1,9 @@
 # FractPy: a python library for generating fractals
----
 
 This library currently implements the generation of following fractals:
 
 - [Newton Fractal](https://en.wikipedia.org/wiki/Newton_fractal)
-  - For Newton Fractal, this library currently supports only polynomial functions with real powers.
+  - For Newton Fractal, this library can currently be used only for polynomial functions with real powers.
 
 **FractPy** relies on `sympy`, `numpy`, and `matplotlib` - all part of the standard scientific Python stack so is easy to install on all operating systems.
 
@@ -29,7 +28,7 @@ p.show()
 
 The above code will generate the following plot:
 
-#### figure
+<img src="docs/_static/readme_plot.png" width=500 class="center">
 
 Full documentation is available here: https://fractpy.readthedocs.io/
 
