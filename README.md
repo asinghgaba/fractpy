@@ -28,7 +28,7 @@ p.show()
 
 The above code will generate the following plot:
 
-![](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/readme_plot.png)
+![plot](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/readme_plot.png)
 
 Full documentation is available here: https://fractpy.readthedocs.io/
 
