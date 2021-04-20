@@ -2,8 +2,12 @@ Create a Model
 ==============
 
 A model in ``fractpy`` is an object which represents the method it is using
-to generate fractals. However, currently ``fractpy`` only supports Newton
-Fractal (more to be added soon).
+to generate fractals. 
+
+.. note::
+    FractPy currently supports only Newton Fractal method of fractal
+    generation for polynomial functions with real powers. More methods are
+    currently in development.
 
 To make a Newton Fractal Model for the function
 :math:`f(x) = (x^2 - 1)(x^2 + 1)`  all we have to do is pass in the

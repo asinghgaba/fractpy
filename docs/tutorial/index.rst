@@ -15,12 +15,17 @@ exactly identical to be classified as a Fractal. Instead shapes that
 display inherent and repeating similarities are the main requirement
 for being classified as a Fractal.
 
-Here is an animation [Mandelbrot2010]_ representing the Mandelbrot Set
-Fractal one of the most iconic math fractals:
+Fractals are found all over nature, spanning a huge range of scales. We
+find the same patterns again and again, from the tiny branching of our
+blood vessels and neurons to the branching of trees, lightning bolts,
+snowflakes, river networks and even the clustering of galaxies.
+Regardless of scale, these patterns are all formed by repeating a simple
+branching process.
 
-.. image:: /_static/mandelbrot.gif
+.. image:: /_static/tutorial.jpg
     :align: center
-    :scale: 150
+
+Fig. Fractal in nature, geometry, and algebra: [Jesser]_
 
 For more background information on fractals: [FractalFoundation2009]_.
 
@@ -50,12 +55,34 @@ For :math:`f(z) = z^3 - 1`, the iteration is:
 
     z_{n+1} = z_n - \frac{z^3 - 1}{3z^2}
 
-Let us now see how to plot fractal for this function using ``fractpy``.
+
+Installing FractPy
+------------------
+
+Let us now see how to plot fractal for this function using FractPy, but
+first we need to install it. FractPy requires the following things on your
+computer:
+
+- Python 3.6 or greater
+- NumPy
+- SymPy
+- Matplotlib
+
+To install FractPy:
+
+- On Mac OSX or linux open a terminal;
+- On Windows open the Command prompt or similar
+
+and type::
+
+    $ python -m pip install fractpy
+
+
 
 Using FractPy
 -------------
 
-Generating fractals in ``fractypy`` can be divided into 2 steps:
+Generating fractals in ``fractpy`` can be divided into 2 steps:
 
 1. Creating a model
    
@@ -91,16 +118,17 @@ and pass in the axes limits along with the desired resolution of the
 image which returns a ``matplotlib.Figure.figure``::
 
     >>>xmin, xmax, ymin, ymax = -2, 2, -2, 2
-    >>>p = model.plot(xmin, xmax, ymin, ymax, (200, 200))
+    >>>p = model.plot(xmin, xmax, ymin, ymax, (500, 500))
     >>>p.show()
 
 The above code will generate the Newton Fractal for :math:`x^3 - 1`, in the range
 -2 to 2 for both x-axis and y-axis, and the resolution of the image would be
-200X200.
+500X500.
 
 This creates the following plot:
 
-.. TODO: Insert Plot
+.. image:: /_static/tutorial_plot.png
+    :align: center
 
 .. note::
     Generating fractal requires some heavy computation so it may take seconds,

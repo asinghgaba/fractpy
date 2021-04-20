@@ -2,7 +2,11 @@ import setuptools
 
 exec(open("fractpy/version.py", "r").read())
 
-requirements = ["numpy", "sympy", "matplotlib"]
+# Read in the requirements.txt file
+with open("requirements.txt") as f:
+    requirements = []
+    for library in f.read().splitlines():
+        requirements.append(library)
 
 #with open("README.md", "r", encoding="utf-8") as fh:
 #    long_description = fh.read()

@@ -17,7 +17,8 @@ generated, and get the ``matplotlib.figure.Figure``::
 
 This creates a plot like this, which can be zoomed in:
 
-#gif
+.. image:: /_static/howto_zoom_plot.gif
+    :align: center
 
 .. note:: 
     This currently does not work in Jupyter Notebook, and has to be
