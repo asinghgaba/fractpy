@@ -14,9 +14,9 @@ To make a Newton Fractal Model for the function
 function as ``str`` to the ``NewtonFractal`` class from module
 ``fractpy.models``::
 
-    >>>from fractpy.models import NewtonFractal
-    >>>model = NewtonFractal("(x**2 - 1)(x**2 + 1)")
-    >>>model
+    >>> from fractpy.models import NewtonFractal
+    >>> model = NewtonFractal("(x**2 - 1)(x**2 + 1)")
+    >>> model
     ### FractPy Model ###
     Type: Newton Fractal
     Function: (x**2 - 1)*(x**2 + 1)

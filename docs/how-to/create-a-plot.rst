@@ -7,8 +7,8 @@ want. This returns a ``matplolib.figure.Figure``. To plot a fractal
 for the range -2, 2 and -2.5 , 2.5 for x and y-axis respectively
 and of resolution (600,900)::
 
-    >>>p = model.plot(-2, 2, -2.5, 2.5, (600,900))
-    >>>p.show()
+    >>> p = model.plot(-2, 2, -2.5, 2.5, (600,900))
+    >>> p.show()
 
 This creates the following plot:
 

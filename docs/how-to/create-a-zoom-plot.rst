@@ -12,8 +12,8 @@ the zoomed region. And as done in ``plot`` we will gave to pass in
 the initial axes range, along with the resolution of the plot to be
 generated, and get the ``matplotlib.figure.Figure``::
 
-    >>>p = model.zoom_plot(-2, 2, -2, 2, (200,200))
-    >>>p.show()
+    >>> p = model.zoom_plot(-2, 2, -2, 2, (200,200))
+    >>> p.show()
 
 This creates a plot like this, which can be zoomed in:
 

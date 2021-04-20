@@ -7,9 +7,9 @@ class we pass in the function as type ``str``.
 
 For example to initialise with function :math:`f(x) = x^4 - 3x^3 + 2x^2 - 9`::
 
-    >>>from fractpy import Function
-    >>>f = Function("x**4 - 4*x**3 + 4*x**2 - 4*x + 3")
-    >>>f
+    >>> from fractpy import Function
+    >>> f = Function("x**4 - 4*x**3 + 4*x**2 - 4*x + 3")
+    >>> f
     x**4 - 4*x**3 + 4*x**2 - 4*x + 3
 
 .. note::
@@ -22,7 +22,7 @@ To Calculate Roots
 ------------------
 Use the method ``roots``, which returns list of the roots::
 
-    >>>f.roots()
+    >>> f.roots()
     [1, 3, I, -I]
 
 To Find the Derivative:
@@ -30,5 +30,5 @@ To Find the Derivative:
 Use the method ``differentiate``, which returns the derivative of the function
 in the form of a ``sympy`` expression::
 
-    >>>f.differentiate()
+    >>> f.differentiate()
     4*x**3 - 12*x**2 + 8*x - 4

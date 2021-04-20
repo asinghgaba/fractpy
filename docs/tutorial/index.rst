@@ -98,9 +98,9 @@ and then passing the required function in the form ``str`` as an
 argument during initialisation. The following code shows how to
 make a ``NewtonFractal`` model for the above function::
 
-    >>>from fractpy.models import NewtonFractal
-    >>>model = NewtonFractal("x**3 - 1")
-    >>>model
+    >>> from fractpy.models import NewtonFractal
+    >>> model = NewtonFractal("x**3 - 1")
+    >>> model
     ### FractPy Model ###
     Type: Newton Fractal
     Function: x**3 - 1
@@ -117,9 +117,9 @@ To generate the fractal all we have to do now is call the method ``plot``,
 and pass in the axes limits along with the desired resolution of the
 image which returns a ``matplotlib.Figure.figure``::
 
-    >>>xmin, xmax, ymin, ymax = -2, 2, -2, 2
-    >>>p = model.plot(xmin, xmax, ymin, ymax, (500, 500))
-    >>>p.show()
+    >>> xmin, xmax, ymin, ymax = -2, 2, -2, 2
+    >>> p = model.plot(xmin, xmax, ymin, ymax, (500, 500))
+    >>> p.show()
 
 The above code will generate the Newton Fractal for :math:`x^3 - 1`, in the range
 -2 to 2 for both x-axis and y-axis, and the resolution of the image would be
