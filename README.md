@@ -17,7 +17,7 @@ $ pip install fractpy
 
 ## How do I use FractPy?
 
-Here is an example of generating Newton Fractal for <img src="https://render.githubusercontent.com/render/math?math=f(x) = x^5 - 1">:
+Here is an example of generating Newton Fractal for <img src="https://render.githubusercontent.com/render/math?math=f(x) = x^8 - 4x^3 %2B x^2 - 6">:
 
 ```python
 from fractpy.models import NewtonFractal
