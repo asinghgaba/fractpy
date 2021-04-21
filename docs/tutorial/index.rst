@@ -115,7 +115,7 @@ Generating Fractal
 ++++++++++++++++++
 To generate the fractal all we have to do now is call the method ``plot``,
 and pass in the axes limits along with the desired resolution of the
-image which returns a ``matplotlib.Figure.figure``::
+image which returns a ``matplotlib.figure.Figure``::
 
     >>> xmin, xmax, ymin, ymax = -2, 2, -2, 2
     >>> p = model.plot(xmin, xmax, ymin, ymax, (500, 500))

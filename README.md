@@ -21,8 +21,8 @@ Here is an example of generating Newton Fractal for <img src="https://render.git
 
 ```python
 from fractpy.models import NewtonFractal
-model = NewtonFractal("x**5 - 1")
-p = model.plot(-2, 2, -2, 2)
+model = NewtonFractal("x**8 - 4x**3 + x**2 - 6")
+p = model.plot(-2, 2, -2, 2, (1000, 1000))
 p.show()
 ```
 
