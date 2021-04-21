@@ -2,9 +2,11 @@
 
 import numpy as np
 import sympy as sym
-from sympy.parsing.sympy_parser import (parse_expr, 
-standard_transformations, implicit_multiplication_application)
-
+from sympy.parsing.sympy_parser import (
+    parse_expr,
+    standard_transformations,
+    implicit_multiplication_application,
+)
 
 
 class Function:
@@ -31,9 +33,9 @@ class Function:
     This class was mainly developed to be used for
     ``fractpy.models.NewtonFractal`` class.
 
-    
+
     """
-    
+
     def __init__(self, function):
         self.function = function
 
@@ -46,20 +48,24 @@ class Function:
 
     @function.setter
     def function(self, func):
-        transformations = (standard_transformations + 
-        (implicit_multiplication_application,))
+        transformations = standard_transformations + (
+            implicit_multiplication_application,
+        )
         expr = parse_expr(func, transformations=transformations)
-        if len(expr.free_symbols)==1:
+        if len(expr.free_symbols) == 1:
             self._function = expr
             self._variable = list(expr.free_symbols)[0]
         else:
-            raise TypeError(func + f" is not a single variable function, \
-it has {len(expr.free_symbols)} variables")
+            raise TypeError(
+                func
+                + f" is not a single variable function, \
+it has {len(expr.free_symbols)} variables"
+            )
 
     @property
     def variable(self):
         return self._variable
-    
+
     def roots(self):
         """Calculate roots of the function.
 
@@ -68,8 +74,7 @@ it has {len(expr.free_symbols)} variables")
         list
             Roots of the function.
         """
-        return np.array(list(sym.solveset(self.function, self.variable)),\
-            dtype=complex)
+        return np.array(list(sym.solveset(self.function, self.variable)), dtype=complex)
 
     def differentiate(self):
         """Differentiates the function.

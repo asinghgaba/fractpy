@@ -1,5 +1,9 @@
 # FractPy: a python library for generating fractals
 
+[![License: MIT](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
+[![Documentation Status](https://readthedocs.org/projects/fractpy/badge/?version=master)](https://fractpy.readthedocs.io/en/master/?badge=master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 This library currently implements the generation of following fractals:
 
 - [Newton Fractal](https://en.wikipedia.org/wiki/Newton_fractal)
