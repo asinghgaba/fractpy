@@ -64,19 +64,16 @@ class NewtonFractal:
 
     @property
     def function(self):
-        """Function for which the fractal is to be generated."""
         return self._function
 
     @function.setter
     def function(self, func):
-        """Sets a new function to the object."""
         self._function = Function(func)
         self._roots_list = self._function.roots()
         self._newton_step = self._function._rd_python_function()
 
     @property
     def roots_list(self):
-        """Roots of the function."""
         return self._roots_list
 
     def _make_list(self):

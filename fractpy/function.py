@@ -44,12 +44,10 @@ class Function:
 
     @property
     def function(self):
-        """Function as ``sympy`` expression."""
         return self._function
 
     @function.setter
     def function(self, func):
-        """Sets a new function to the object."""
         transformations = standard_transformations + (
             implicit_multiplication_application,
         )
@@ -66,7 +64,6 @@ it has {len(expr.free_symbols)} variables"
 
     @property
     def variable(self):
-        """Variable in terms which the function is defined."""
         return self._variable
 
     def roots(self):

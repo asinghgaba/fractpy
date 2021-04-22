@@ -32,7 +32,7 @@ jobs:
     - name: Check docstrings
       run: |
         python -m pip install interrogate
-        python -m interrogate -v --ignore-init-method --ignore-init-module --fail-under 100 fractpy --exclude fractpy/version.py --ignore-magic
+        python -m interrogate -c setup.cfg fractpy
     - name: Test with pytest
       run: |
         python setup.py develop
