@@ -40,7 +40,7 @@ jobs:
     - name: Generate coverage report
       if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
       run: |
-        pytest --cov=./ --cov-report=xml
+        pytest --cov=./fractpy/ --cov-report=xml
     - name: Upload coverage to Codecov
       if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
       uses: codecov/codecov-action@v1
