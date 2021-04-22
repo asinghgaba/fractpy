@@ -41,7 +41,7 @@ Full documentation is available here: https://fractpy.readthedocs.io/
 To install development version of this library:
 
 ```bash
-$ python setup.py develop
+$ python -m pip install -e ."[dev]"
 ```
 
 All contributions are welcome, whether it be adding new methods of generating fractals, writing documentation, or fixing embarrassing bugs!

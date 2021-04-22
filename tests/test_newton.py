@@ -43,7 +43,17 @@ x**3 - 2*x**2 - 4"
         model._yvals = [i for i in range(3)]
         model._make_list()
         zlist = set(
-            [0 + 0j, 0 + 1j, 0 + 2j, 1 + 0j, 1 + 1j, 1 + 2j, 2 + 0j, 2 + 1j, 2 + 2j]
+            [
+                0 + 0j,
+                0 + 1j,
+                0 + 2j,
+                1 + 0j,
+                1 + 1j,
+                1 + 2j,
+                2 + 0j,
+                2 + 1j,
+                2 + 2j,
+            ]
         )
         self.assertEqual(set(model._z_list), zlist)
 
@@ -54,7 +64,9 @@ x**3 - 2*x**2 - 4"
         model._yvals = [i for i in range(3)]
         model._make_list()
         rootid = model._match_root()
-        test_rootid = np.array([-1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0])
+        test_rootid = np.array(
+            [-1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+        )
         self.assertTrue((rootid == test_rootid).all())
 
     def test_prepare_plot(self):

@@ -8,6 +8,12 @@ with open("requirements.txt") as f:
     for library in f.read().splitlines():
         requirements.append(library)
 
+# Read in the test_requirements.txt file
+with open("test_requirements.txt") as f:
+    test_requirements = []
+    for library in f.read().splitlines():
+        test_requirements.append(library)
+
 # with open("README.md", "r", encoding="utf-8") as fh:
 #    long_description = fh.read()
 
@@ -33,8 +39,6 @@ setuptools.setup(
     packages=setuptools.find_packages(where="."),
     python_requires=">=3.6",
     extras_require={
-        "dev": [
-            "pytest>=3.7",
-        ],
+        "dev": test_requirements,
     },
 )

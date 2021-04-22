@@ -8,7 +8,9 @@ from fractpy.zoom import UpdatingRect
 from fractpy import Function
 
 
-rect = UpdatingRect([0, 0], 0, 0, facecolor="none", edgecolor="black", linewidth=1.0)
+rect = UpdatingRect(
+    [0, 0], 0, 0, facecolor="none", edgecolor="black", linewidth=1.0
+)
 
 
 class NewtonFractal:
@@ -87,8 +89,10 @@ class NewtonFractal:
         for r in self.roots_list:
             # Check for closeness to each root in the list
             rootid = np.where(
-                np.abs(self._z_list - r * np.ones(len(self._z_list))) < findgoal,
-                np.ones(len(self._z_list)) * np.where(self.roots_list == r)[0][0],
+                np.abs(self._z_list - r * np.ones(len(self._z_list)))
+                < findgoal,
+                np.ones(len(self._z_list))
+                * np.where(self.roots_list == r)[0][0],
                 rootid,
             )
         return rootid

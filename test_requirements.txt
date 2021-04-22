@@ -1,0 +1,6 @@
+black
+pytest
+pytest-cov
+pytest-flake8
+pytest-randomly
+pytest-sugar
