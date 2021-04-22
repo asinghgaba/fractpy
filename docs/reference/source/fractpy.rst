@@ -16,4 +16,5 @@ ________________________
 
 .. automodule:: fractpy.function
     :members:
+    :noindex:
 
