@@ -28,7 +28,7 @@ jobs:
         python -m pip install -r test_requirements.txt
     - name: Check format
       run: |
-        python -m black -l 80 . --check
+        python -m black -l 79 . --check
     - name: Check docstrings
       run: |
         python -m pip install interrogate
