@@ -4,13 +4,11 @@ import unittest
 
 import numpy as np
 import sympy as sym
-import matplotlib.pyplot as plt
-from matplotlib.testing.decorators import check_figures_equal
 
 from fractpy.models import NewtonFractal
 
 x = sym.Symbol("x")
-I = sym.I
+i = sym.I
 
 
 class TestNewtonFractal(unittest.TestCase):
@@ -22,7 +20,7 @@ class TestNewtonFractal(unittest.TestCase):
 
         # Test for function
         model_func = model.function.function
-        test_func = (x - 2) * (x - 3 * I) * (x + 3 * I)
+        test_func = (x - 2) * (x - 3 * i) * (x + 3 * i)
         self.assertEqual(model_func, test_func)
 
         # Test for roots_list

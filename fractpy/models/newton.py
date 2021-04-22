@@ -1,7 +1,6 @@
 """A class for plotting Newton Fractal."""
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 import sympy as sym
 
 from fractpy.zoom import UpdatingRect
@@ -57,20 +56,27 @@ class NewtonFractal:
         self.n = nmax  # Number of iterations
 
     def __repr__(self):
-        return f"### FractPy Model ###\nType: Newton Fractal\nFunction: {self.function}"
+        return (
+            f"### FractPy Model ###\n"
+            f"Type: Newton Fractal\n"
+            f"Function: {self.function}"
+        )
 
     @property
     def function(self):
+        """Function for which the fractal is to be generated."""
         return self._function
 
     @function.setter
     def function(self, func):
+        """Sets a new function to the object."""
         self._function = Function(func)
         self._roots_list = self._function.roots()
         self._newton_step = self._function._rd_python_function()
 
     @property
     def roots_list(self):
+        """Roots of the function."""
         return self._roots_list
 
     def _make_list(self):
@@ -112,7 +118,9 @@ class NewtonFractal:
         overall_counter = 0
         prec_goal_list = np.ones(len(self._z_list)) * self._precision_goal
 
-        while any(rel_diff) > self._precision_goal and overall_counter < self.n:
+        while (
+            any(rel_diff) > self._precision_goal and overall_counter < self.n
+        ):
             newton_step = self._newton_step(temp_list)
             self._z_list = temp_list - newton_step
             rel_diff = np.abs(newton_step / temp_list)
@@ -179,7 +187,7 @@ class NewtonFractal:
         self._height = dim[1]
 
         fig, ax = plt.subplots()
-        im = ax.matshow(
+        ax.matshow(
             self._prepare_plot(xstart, xend, ystart, yend),
             origin="lower",
             extent=(

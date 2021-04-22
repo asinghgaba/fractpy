@@ -2,7 +2,6 @@
 
 import unittest
 
-import numpy as np
 import sympy as sym
 
 from fractpy import Function
@@ -25,8 +24,7 @@ class TestFunction(unittest.TestCase):
             a = Function(func)
         err = mess.exception
         self.assertEqual(
-            "x + y is not a single variable \
-function, it has 2 variables",
+            "x + y is not a single variable function, it has 2 variables",
             str(err),
         )
 
@@ -60,7 +58,9 @@ function, it has 2 variables",
         f = x ** 2 + 1
         func_1 = Function("x")._make_python_function(f, x)
 
-        func_2 = lambda x: x ** 2 + 1
+        def func_2(x):
+            return x ** 2 + 1
+
         # Check if all functions are equal
         ans_0, ans_1, ans_2 = [], [], []
         for i in range(5):
@@ -75,7 +75,8 @@ function, it has 2 variables",
         a = Function(func)
         func_0 = a._rd_python_function()
 
-        func_1 = lambda x: (x ** 3 - 2 * x + 1) / (3 * x ** 2 - 2)
+        def func_1(x):
+            return (x ** 3 - 2 * x + 1) / (3 * x ** 2 - 2)
 
         ans_0, ans_1 = [], []
         for i in range(5):
