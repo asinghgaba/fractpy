@@ -1,7 +1,9 @@
 # FractPy: a python library for generating fractals
 
 [![License: MIT](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
+![](https://github.com/asinghgaba/fractpy/workflows/CI/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/fractpy/badge/?version=master)](https://fractpy.readthedocs.io/en/master/?badge=master)
+[![codecov](https://codecov.io/gh/asinghgaba/fractpy/branch/master/graph/badge.svg?token=RZBB3MWH7Y)](https://codecov.io/gh/asinghgaba/fractpy)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 This library currently implements the generation of following fractals:
@@ -55,7 +57,7 @@ $ python -m black -l 79 .
 2. Also, please perform the following checks:
 
 ```bash
-$ python -m pytest --cov=fractpy --cov-fail-under=70 --flake8
+$ python -m pytest --flake8
 ```
 
 All contributions are welcome, whether it be adding new methods of generating fractals, writing documentation, or fixing embarrassing bugs!

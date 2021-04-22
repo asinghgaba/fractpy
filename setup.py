@@ -9,7 +9,7 @@ with open("requirements.txt") as f:
         requirements.append(library)
 
 # Read in the test_requirements.txt file
-with open("test_requirements.txt") as f:
+with open("tests/test_requirements.txt") as f:
     test_requirements = []
     for library in f.read().splitlines():
         test_requirements.append(library)
