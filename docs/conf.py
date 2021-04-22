@@ -13,9 +13,9 @@
 import os
 import sys
 
-import fractpy
-
 sys.path.insert(0, os.path.abspath("../"))
+
+import fractpy
 
 
 # -- Project information -----------------------------------------------------

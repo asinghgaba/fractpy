@@ -44,6 +44,20 @@ To install development version of this library:
 $ python -m pip install -e ."[dev]"
 ```
 
+Before you commit any code:
+
+1. Style your code automatically using black:
+
+```bash
+$ python -m black -l 79 .
+```
+
+2. Also, please perform the following checks:
+
+```bash
+$ python -m pytest --cov=fractpy --cov-fail-under=70 --flake8
+```
+
 All contributions are welcome, whether it be adding new methods of generating fractals, writing documentation, or fixing embarrassing bugs!
 
 In the interest of fostering an open and welcoming environment, all
