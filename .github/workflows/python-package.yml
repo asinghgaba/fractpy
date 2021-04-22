@@ -36,4 +36,20 @@ jobs:
     - name: Test with pytest
       run: |
         python setup.py develop
-        python -m pytest --cov=fractpy --cov-fail-under=70 --flake8
+        python -m pytest --flake8
+    - name: Generate coverage report
+      if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
+      run: |
+        pytest --cov=./ --cov-report=xml
+    - name: Upload coverage to Codecov
+      if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
+      uses: codecov/codecov-action@v1
+      with:
+        files: ./coverage.xml
+        directory: ./coverage/reports/
+        flags: unittests
+        env_vars: OS,PYTHON
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true
