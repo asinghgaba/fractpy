@@ -196,7 +196,7 @@ class NewtonFractal:
         )
         # fig.colorbar(ncmap, ax=ax)
         title = f"Newton Fractal for $f({sym.latex(self.function.variable)}) = \
-            {sym.latex(self.function.function)}$"
+{sym.latex(self.function.function)}$"
         ax.set_title(title)
         plt.tight_layout()
 
@@ -261,5 +261,10 @@ class NewtonFractal:
         ax2.callbacks.connect("xlim_changed", self._ax_update)
         ax2.callbacks.connect("ylim_changed", self._ax_update)
         ax2.set_title("Zoom here")
+
+        title = f"Newton Fractal for $f({sym.latex(self.function.variable)}) = \
+{sym.latex(self.function.function)}$"
+        fig.suptitle(title)
+        plt.tight_layout()
 
         return fig

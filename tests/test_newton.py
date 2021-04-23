@@ -4,6 +4,7 @@ import unittest
 
 import numpy as np
 import sympy as sym
+import matplotlib
 
 from fractpy.models import NewtonFractal
 
@@ -88,3 +89,37 @@ x**3 - 2*x**2 - 4"
             ]
         )
         self.assertTrue((data == test_data).all())
+
+    def test_plot(self):
+        func = "2x**2 - 8"
+        model = NewtonFractal(func)
+        p = model.plot(-2, 2, -2, 2, (20, 10))
+
+        # Check dimensions
+        self.assertEqual(model._width, 20)
+        self.assertEqual(model._height, 10)
+
+        self.assertIsInstance(p, matplotlib.figure.Figure)
+        self.assertEqual(
+            p.axes[0].title.get_text(),
+            "Newton Fractal for $f(x) = 2 x^{2} - 8$",
+        )
+
+    def test_zoom_plot(self):
+        func = "x**3 - 1"
+        model = NewtonFractal(func)
+        p = model.zoom_plot(-2, 2, -2, 2, (10, 20))
+
+        self.assertEqual(model._width, 10)
+        self.assertEqual(model._height, 20)
+
+        self.assertIsInstance(p, matplotlib.figure.Figure)
+        self.assertEqual(
+            p.get_children()[-1].get_text(),
+            "Newton Fractal for $f(x) = x^{3} - 1$",
+        )
+        self.assertEqual(len(p.axes), 2)
+        self.assertEqual(
+            p.axes[1].title.get_text(),
+            "Zoom here",
+        )
