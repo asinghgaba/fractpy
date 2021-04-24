@@ -128,8 +128,9 @@ x**3 - 2*x**2 - 4"
         )
         plt.close(p)
 
-@cleanup('fast')
-@image_comparison(baseline_images=['plot'], extensions=['png'])
+
+@cleanup("fast")
+@image_comparison(baseline_images=["plot"], extensions=["png"])
 def test_image_comparison_plot():
     func = "x**5 - 1"
     model = NewtonFractal(func)
