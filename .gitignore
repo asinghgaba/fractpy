@@ -148,3 +148,6 @@ Thumbs.db
 
 # Visual Studio Code
 .vscode
+
+# Matplotlib image comparison test files
+result_images
