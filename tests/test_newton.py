@@ -104,6 +104,7 @@ x**3 - 2*x**2 - 4"
             p.axes[0].title.get_text(),
             "Newton Fractal for $f(x) = 2 x^{2} - 8$",
         )
+        plt.close(p)
 
     def test_zoom_plot(self):
         func = "x**3 - 1"
@@ -123,3 +124,4 @@ x**3 - 2*x**2 - 4"
             p.axes[1].title.get_text(),
             "Zoom here",
         )
+        plt.close(p)
