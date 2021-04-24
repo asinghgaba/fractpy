@@ -6,6 +6,7 @@ import numpy as np
 import sympy as sym
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.testing.decorators import cleanup, image_comparison
 
 from fractpy.models import NewtonFractal
 
@@ -126,3 +127,10 @@ x**3 - 2*x**2 - 4"
             "Zoom here",
         )
         plt.close(p)
+
+@cleanup('fast')
+@image_comparison(baseline_images=['plot'], extensions=['png'])
+def test_image_comparison_plot():
+    func = "x**5 - 1"
+    model = NewtonFractal(func)
+    p = model.plot(-2, 2, -2, 2)
