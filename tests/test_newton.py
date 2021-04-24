@@ -5,6 +5,7 @@ import unittest
 import numpy as np
 import sympy as sym
 import matplotlib
+import matplotlib.pyplot as plt
 
 from fractpy.models import NewtonFractal
 
