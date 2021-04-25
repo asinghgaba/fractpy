@@ -13,7 +13,7 @@ of the Fractal, regardless of how zoomed in, or zoomed out you are, it
 looks very similar to the whole image. A shape does not have to be
 exactly identical to be classified as a Fractal. Instead shapes that
 display inherent and repeating similarities are the main requirement
-for being classified as a Fractal.
+for being classified as a Fractal. [Falconer1990]_
 
 Fractals are found all over nature, spanning a huge range of scales. We
 find the same patterns again and again, from the tiny branching of our
@@ -25,7 +25,7 @@ branching process.
 .. image:: /_static/tutorial.jpg
     :align: center
 
-Fig. Fractal in nature, geometry, and algebra: [Jesser]_
+*Fig: Fractal in nature, geometry, and algebra* [Jasser]_
 
 For more background information on fractals: [FractalFoundation2009]_.
 
@@ -37,7 +37,7 @@ as Newton Fractal. Newton fractals are fractals created in the plane of
 complex numbers. An iteration process with Newton’s method is started at
 each point on a grid in the complex plane, and a color is assigned to each
 point according to which of the roots of a given function the iteration
-converges to.
+converges to. [Sahari2006]_
 
 A generalisation of Newton's iteration is:
 
@@ -60,15 +60,8 @@ Installing FractPy
 ------------------
 
 Let us now see how to plot fractal for this function using FractPy, but
-first we need to install it. FractPy requires the following things on your
-computer:
-
-- Python 3.6 or greater
-- NumPy
-- SymPy
-- Matplotlib
-
-To install FractPy:
+first we need to install it. FractPy requires Python 3.6 or greater, so
+assuming you have it, to install FractPy:
 
 - On Mac OSX or linux open a terminal;
 - On Windows open the Command prompt or similar
