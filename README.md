@@ -1,6 +1,6 @@
 # FractPy: a python library for generating fractals
 
-[![License: MIT](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
+[![License: MIT](https://raw.githubusercontent.com/asinghgaba/fractpy/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
 ![](https://github.com/asinghgaba/fractpy/workflows/CI/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/fractpy/badge/?version=master)](https://fractpy.readthedocs.io/en/master/?badge=master)
 [![codecov](https://codecov.io/gh/asinghgaba/fractpy/branch/master/graph/badge.svg?token=RZBB3MWH7Y)](https://codecov.io/gh/asinghgaba/fractpy)
@@ -34,7 +34,7 @@ p.show()
 
 The above code will generate the following plot:
 
-![](https://github.com/asinghgaba/fractpy/blob/master/docs/_static/readme_plot.png)
+![](https://raw.githubusercontent.com/asinghgaba/fractpy/master/docs/_static/readme_plot.png)
 
 Full documentation is available here: https://fractpy.readthedocs.io/
 
@@ -48,13 +48,13 @@ $ python -m pip install -e ."[dev]"
 
 Before you commit any code:
 
-1. Style your code automatically using black:
+- Style your code automatically using black:
 
 ```bash
 $ python -m black -l 79 .
 ```
 
-2. Also, please perform the following checks:
+- Also, please perform the following checks:
 
 ```bash
 $ python -m pytest --flake8
