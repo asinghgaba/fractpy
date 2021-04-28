@@ -14,8 +14,8 @@ with open("tests/test_requirements.txt") as f:
     for library in f.read().splitlines():
         test_requirements.append(library)
 
-# with open("README.md", "r", encoding="utf-8") as fh:
-#    long_description = fh.read()
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 setuptools.setup(
     name="fractpy",
@@ -24,8 +24,8 @@ setuptools.setup(
     author="Amarjit Singh Gaba",
     author_email="asinghgaba@gmail.com",
     description="A library to generate fractals",
-    # long_description=long_description,
-    # long_description_content_type="text/markdown",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/asinghgaba/fractpy",
     project_urls={
         "Bug Tracker": "https://github.com/asinghgaba/fractpy/issues",
