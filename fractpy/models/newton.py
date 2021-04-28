@@ -15,10 +15,13 @@ rect = UpdatingRect(
 class NewtonFractal:
     """A class for plotting Newton Fractal for a given function.
 
-    TODO: 1. Explain the process for generating fractals and cite
-    references.
-    2. Colours
-    3. Newton iteration on top of plot
+    Newton fractals are fractals created in the plane of complex
+    numbers. An iteration process with Newton’s method (or
+    Newton-Raphson Method) is started at each point on a grid in the
+    complex plane, and a color is assigned to each point according to
+    which of the roots of a given function the iteration converges
+    to. [Sahari, M. and Djellit, I., 2006. Fractal Newton basins.
+    Discrete Dynamics in Nature and Society, 2006, pp.1-16.]
 
     Parameters
     ----------
@@ -41,13 +44,26 @@ class NewtonFractal:
     function : :obj:`fractpy.Function`
         The function for which the Newton Fractal is being
         generated.
+    roots_list : list
+        Roots of the function.
+
+    Example
+    -------
+    To plot Newton Fractal for f(x) = x**4 - 2x**3 + 10 we first
+    make a model, and then plot it in required range and resolution:
+
+    >>> model = NewtonFractal("x**4 - 2x**3 + 10")
+    >>> p = model.plot(-2, 2, -2, 2, (200, 200))
+
+    Where ``p`` is an object of ``matplotlib.figure.Figure``.
+
+    To make a plot which can be zoomed use ``model.zoom_plot()``.
 
     See Also
     --------
     fractpy.Function :
         A class for performing basic calculus operations on
         a function (like finding roots).
-
     """
 
     def __init__(self, func, prec_goal=1.0e-11, nmax=200):
@@ -158,6 +174,8 @@ class NewtonFractal:
         im.set_data(self._prepare_plot(*extent))
         im.set_extent(extent)
         ax.figure.canvas.draw_idle()
+
+    # TODO: 1. Colours
 
     def plot(self, xstart, xend, ystart, yend, dim=(100, 100)):
         """Plots the fractal for given range and dimensions.
