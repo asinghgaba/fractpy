@@ -156,7 +156,7 @@ class NewtonFractal:
         data = np.reshape(data, (len(self._xvals), len(self._yvals))).T
         return data
 
-    def _ax_update(self, ax):
+    def _ax_update(self, ax): # pragma: no cover
         """Updates the plot for the zoomed region."""
         ax.set_autoscale_on(False)  # Otherwise, infinite loop
         # Get the number of points from the number of pixels in the window
@@ -274,7 +274,7 @@ class NewtonFractal:
 
         # Connect for changing the view limits
         ax2.callbacks.connect("xlim_changed", rect)
-        ax2.callbacks.connect("ylim_changed", rect)
+        ax2.callbacks.connect("ylim_changed", rect) 
 
         ax2.callbacks.connect("xlim_changed", self._ax_update)
         ax2.callbacks.connect("ylim_changed", self._ax_update)

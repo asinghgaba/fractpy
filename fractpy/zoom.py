@@ -2,7 +2,7 @@
 from matplotlib.patches import Rectangle
 
 
-class UpdatingRect(Rectangle):
+class UpdatingRect(Rectangle): # pragma: no cover
     """This class is used for ``fractpy.models.NewtonFractal.zoom_plot()``."""
 
     def __call__(self, ax):
