@@ -7,11 +7,6 @@ from fractpy.zoom import UpdatingRect
 from fractpy import Function
 
 
-rect = UpdatingRect(
-    [0, 0], 0, 0, facecolor="none", edgecolor="black", linewidth=1.0
-)
-
-
 class NewtonFractal:
     """A class for plotting Newton Fractal for a given function.
 
@@ -269,6 +264,9 @@ class NewtonFractal:
             ),
         )
 
+        rect = UpdatingRect(
+            [0, 0], 0, 0, facecolor="none", edgecolor="black", linewidth=1.0
+        )
         rect.set_bounds(*ax2.viewLim.bounds)
         ax1.add_patch(rect)
 
