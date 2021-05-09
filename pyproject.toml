@@ -1,0 +1,12 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "fractpy"
+author = "Amarjit Singh Gaba"
+author-email = "asinghgaba@gmail.com"
+home-page = "https://github.com/asinghgaba/fractpy"
+classifiers = [ "License :: OSI Approved :: MIT License", "Operating System :: OS Independent", "Programming Language :: Python :: 3"]
+description-file = "README.md"
+
