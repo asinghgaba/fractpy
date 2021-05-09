@@ -103,10 +103,8 @@ class NewtonFractal:
         for r in self.roots_list:
             # Check for closeness to each root in the list
             rootid = np.where(
-                np.abs(self._z_list - r * np.ones(len(self._z_list)))
-                < findgoal,
-                np.ones(len(self._z_list))
-                * np.where(self.roots_list == r)[0][0],
+                np.abs(self._z_list - r * np.ones(len(self._z_list))) < findgoal,
+                np.ones(len(self._z_list)) * np.where(self.roots_list == r)[0][0],
                 rootid,
             )
         return rootid
@@ -126,9 +124,7 @@ class NewtonFractal:
         overall_counter = 0
         prec_goal_list = np.ones(len(self._z_list)) * self._precision_goal
 
-        while (
-            any(rel_diff) > self._precision_goal and overall_counter < self.n
-        ):
+        while any(rel_diff) > self._precision_goal and overall_counter < self.n:
             newton_step = self._newton_step(temp_list)
             self._z_list = temp_list - newton_step
             rel_diff = np.abs(newton_step / temp_list)

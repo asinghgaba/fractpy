@@ -74,9 +74,7 @@ it has {len(expr.free_symbols)} variables"
         list
             Roots of the function.
         """
-        return np.array(
-            list(sym.solveset(self.function, self.variable)), dtype=complex
-        )
+        return np.array(list(sym.solveset(self.function, self.variable)), dtype=complex)
 
     def differentiate(self):
         """Differentiates the function.

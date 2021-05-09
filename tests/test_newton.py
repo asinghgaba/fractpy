@@ -64,9 +64,7 @@ x**3 - 2*x**2 - 4"
         model._yvals = [i for i in range(3)]
         model._make_list()
         rootid = model._match_root()
-        test_rootid = np.array(
-            [-1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
-        )
+        test_rootid = np.array([-1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0])
         self.assertTrue((rootid == test_rootid).all())
 
     def test_prepare_plot(self):
