@@ -24,3 +24,5 @@ ignore-property-decorators = true
 fail-under = 100
 verbose = 1
 
+[tool.flit.metadata.requires-extra]
+doc = ["sphinx", "sphinx-rtd-theme"]
