@@ -23,15 +23,15 @@ jobs:
 
             - name: Update pip
               run: |
-                  python3 -m pip install --upgrade pip
+                  python -m pip install --upgrade pip
             
             - name: Install tox
               run: |
-                  python3 -m pip install tox tox-gh-actions
+                  python -m pip install tox tox-gh-actions
                   
             - name: Run tox
               run: |
-                  tox
+                  python -m tox -e py38
 
             - name: Upload coverage to Codecov
               uses: codecov/codecov-action@v1.4.1
