@@ -19,7 +19,7 @@ This library currently implements the generation of following fractals:
 The recommended way to install `fractpy` is using Python Package index (PyPi), to install use the following command:
 
 ```bash
-$ pip install fractpy
+$ python -m pip install fractpy
 ```
 
 ## How do I use FractPy?
@@ -41,25 +41,26 @@ Full documentation is available here: https://fractpy.readthedocs.io/
 
 ## How can I contribute to FractPy?
 
-To install development version of this library:
+After forking and cloning the forked repository on your computer, change the directory to fractpy and create a virtual environment:
 
 ```bash
-$ python -m pip install -e ."[dev]"
+$ cd fractpy
+$ python -m venv env 
 ```
 
-Before you commit any code:
-
-- Style your code automatically using black:
+Activate the virtual environment and install tox:
 
 ```bash
-$ python -m black -l 79 .
+$ . env/bin/activate
+$ python -m pip install tox
 ```
 
-- Also, please perform the following checks:
+Make the required changes and then run the tests using tox (Make sure to run the tests before opening a PR):
 
 ```bash
-$ python -m pytest --flake8
+$ python -m tox
 ```
+
 
 All contributions are welcome, whether it be adding new methods of generating fractals, writing documentation, or fixing embarrassing bugs!
 
