@@ -1,3 +1,7 @@
+# v0.0.4
+
+Changed packaging and testing style.
+
 # v0.0.3
 
 First stable release.
