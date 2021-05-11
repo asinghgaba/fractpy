@@ -16,3 +16,11 @@ classifiers = [ "License :: OSI Approved :: MIT License", "Operating System :: O
 description-file = "README.md"
 requires-python = ">=3.6"
 
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = true
+ignore-property-decorators = true
+fail-under = 100
+verbose = 1
+
