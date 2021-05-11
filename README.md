@@ -58,9 +58,25 @@ $ python -m pip install tox
 Make the required changes and then run the tests using tox (Make sure to run the tests before opening a PR):
 
 ```bash
-$ python -m tox
+$ python -m tox -e dev
+```
+### Documentation
+
+To build the documentation first install flit, which will help in installing the build requirements:
+
+```bash
+$ python -m pip installl flit
+$ python -m flit install --symlink
 ```
 
+Then:
+
+```
+$ cd docs
+$ make html
+```
+
+Docs will be built in docs/_build directory.
 
 All contributions are welcome, whether it be adding new methods of generating fractals, writing documentation, or fixing embarrassing bugs!
 
