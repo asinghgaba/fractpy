@@ -1,7 +1,7 @@
 # FractPy: a Python library for generating fractals
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![PyPI](https://img.shields.io/pypi/v/fractpy?color=blue)](https://pypi.org/project/fractpy/)
 [![License: MIT](https://raw.githubusercontent.com/asinghgaba/fractpy/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
@@ -109,6 +109,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/asinghgaba"><img src="https://avatars.githubusercontent.com/u/77078706?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amarjit Singh Gaba</b></sub></a><br /><a href="https://github.com/asinghgaba/fractpy/commits?author=asinghgaba" title="Code">💻</a> <a href="https://github.com/asinghgaba/fractpy/issues?q=author%3Aasinghgaba" title="Bug reports">🐛</a> <a href="https://github.com/asinghgaba/fractpy/commits?author=asinghgaba" title="Documentation">📖</a> <a href="#design-asinghgaba" title="Design">🎨</a> <a href="#example-asinghgaba" title="Examples">💡</a> <a href="#ideas-asinghgaba" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-asinghgaba" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-asinghgaba" title="Maintenance">🚧</a> <a href="#platform-asinghgaba" title="Packaging/porting to new platform">📦</a> <a href="#question-asinghgaba" title="Answering Questions">💬</a> <a href="https://github.com/asinghgaba/fractpy/pulls?q=is%3Apr+reviewed-by%3Aasinghgaba" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/asinghgaba/fractpy/commits?author=asinghgaba" title="Tests">⚠️</a> <a href="#tutorial-asinghgaba" title="Tutorials">✅</a> <a href="#projectManagement-asinghgaba" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/imal552"><img src="https://avatars.githubusercontent.com/u/84086297?v=4?s=100" width="100px;" alt=""/><br /><sub><b>imal552</b></sub></a><br /><a href="#ideas-imal552" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-imal552" title="User Testing">📓</a></td>
+    <td align="center"><a href="https://github.com/antholmane"><img src="https://avatars.githubusercontent.com/u/84087910?v=4?s=100" width="100px;" alt=""/><br /><sub><b>antholmane</b></sub></a><br /><a href="#ideas-antholmane" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-antholmane" title="User Testing">📓</a></td>
   </tr>
 </table>
 
