@@ -1,8 +1,8 @@
 # FractPy: a Python library for generating fractals
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 [![PyPI](https://img.shields.io/pypi/v/fractpy?color=blue)](https://pypi.org/project/fractpy/)
 [![License: MIT](https://raw.githubusercontent.com/asinghgaba/fractpy/master/docs/_static/license.svg)](https://github.com/asinghgaba/fractpy/blob/master/LICENSE)
 ![](https://github.com/asinghgaba/fractpy/workflows/CI/badge.svg)
