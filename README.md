@@ -89,7 +89,7 @@ conduct: https://www.python.org/psf/codeofconduct/
 
 ## Getting Help
 
-For more information or to ask questions about FractPy join our [Slack Channel](https://fractpy.slack.com.).
+For more information or to ask questions about FractPy join our [Slack Channel](https://join.slack.com/t/fractpy/shared_invite/zt-pbuufm38-Fo~slkZxB0RMm4Q28d_LzA).
 
 ## Licensing
 
