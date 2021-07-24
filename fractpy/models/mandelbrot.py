@@ -12,10 +12,15 @@ class MandelbrotFractal:
 
     Parameters
     ----------
-    
+    thresh : int, optional
+        The threshold value to check if z is bounded or not in the Mandelbrot equation (default is 2).
+    power : int, optional
+        The power to which z is to be raised in the generalised Mandelbrot equation (default is 2).
+    nmax : int, optional
+        Number of iterations to be run (default is 200).
     """
 
-    def __init__(self, thresh=4, power=2, nmax=200):
+    def __init__(self, thresh=2, power=2, nmax=200):
         self._threshold = thresh
         self._power = power
         self.n = nmax
