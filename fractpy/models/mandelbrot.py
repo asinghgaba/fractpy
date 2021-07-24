@@ -188,8 +188,3 @@ class MandelbrotFractal:
         return fig
 
 
-model = MandelbrotFractal(nmax=100)
-p = model.zoom_plot(-2, 0.5, -1.25, 1.25, (500,500))
-p.show()
-
-plt.show()
