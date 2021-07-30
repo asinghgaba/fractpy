@@ -191,5 +191,3 @@ class MandelbrotFractal:
         plt.tight_layout()
 
         return fig
-
-
