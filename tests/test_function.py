@@ -16,7 +16,7 @@ class TestFunction(unittest.TestCase):
         # Test for a valid function
         func = "(x**2 + 1)(x - 1)"
         a = Function(func)
-        self.assertEqual(a.function, (x ** 2 + 1) * (x - 1))
+        self.assertEqual(a.function, (x**2 + 1) * (x - 1))
 
         # Test for an invalid function
         func = "x + y"
@@ -41,13 +41,13 @@ class TestFunction(unittest.TestCase):
     def test_differentiate(self):
         func = "x**4 - 2*x**2 - 4"
         a = Function(func)
-        derivative = 4 * x ** 3 - 4 * x
+        derivative = 4 * x**3 - 4 * x
         self.assertEqual(a.differentiate(), derivative)
 
     def test_relative_difference(self):
         func = "4*x**2 - x"
         a = Function(func)
-        rd = (4 * x ** 2 - x) / (8 * x - 1)
+        rd = (4 * x**2 - x) / (8 * x - 1)
         self.assertEqual(a._relative_difference(), rd)
 
     def test_make_python_function(self):
@@ -55,11 +55,11 @@ class TestFunction(unittest.TestCase):
         a = Function(func)
         func_0 = a._make_python_function()
 
-        f = x ** 2 + 1
+        f = x**2 + 1
         func_1 = Function("x")._make_python_function(f, x)
 
         def func_2(x):
-            return x ** 2 + 1
+            return x**2 + 1
 
         # Check if all functions are equal
         ans_0, ans_1, ans_2 = [], [], []
@@ -76,7 +76,7 @@ class TestFunction(unittest.TestCase):
         func_0 = a._rd_python_function()
 
         def func_1(x):
-            return (x ** 3 - 2 * x + 1) / (3 * x ** 2 - 2)
+            return (x**3 - 2 * x + 1) / (3 * x**2 - 2)
 
         ans_0, ans_1 = [], []
         for i in range(5):
